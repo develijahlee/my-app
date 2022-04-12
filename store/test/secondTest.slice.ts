@@ -7,7 +7,7 @@ interface testState {
 }
 
 const initialState: testState = {
-    value: 'initial value',
+    value: 'initial second test value',
     count: 0,
     active: false
 }

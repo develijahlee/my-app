@@ -2,16 +2,51 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import { useAppSelector } from "../store/index";
+import { useAppSelector, useAppDispatch } from "../store/index";
 import { RootStateOrAny } from "react-redux";
+import { changeText } from "../store/test/firstTest.slice";
+import {
+  changeValue,
+  incrementByAmount,
+  decrementByAmount,
+  toggleState,
+} from "../store/test/secondTest.slice";
 
 const Home: NextPage = () => {
-  const toggleRemovedValue = useAppSelector(
-    (state: RootStateOrAny) => state.firstTest.value
+  const dispatch = useAppDispatch();
+  const firstTestValue = useAppSelector(
+    (state: RootStateOrAny) => state.firstTest.text
   );
-  const second = useAppSelector(
+  const secondTestValue = useAppSelector(
+    (state: RootStateOrAny) => state.secondTest.value
+  );
+  const secondTestCount = useAppSelector(
     (state: RootStateOrAny) => state.secondTest.count
   );
+  const secondTestBoolean = useAppSelector(
+    (state: RootStateOrAny) => state.secondTest.active
+  );
+
+  const changeFirstTestValue = () => {
+    dispatch(changeText("changed first test value~"));
+  };
+
+  const increaseCount = () => {
+    dispatch(incrementByAmount(1));
+  };
+
+  const decreaseCount = () => {
+    dispatch(decrementByAmount(1));
+  };
+
+  const changeSecondTestValue = () => {
+    dispatch(changeValue("changed second test value!"));
+  };
+
+  const toggleSecondTestState = () => {
+    dispatch(toggleState());
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -21,11 +56,24 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <p>test {toggleRemovedValue}</p>
-        <p>count {second}</p>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+
+        <p>firstTestValue: {firstTestValue}</p>
+        <button onClick={changeFirstTestValue}>Change FirstTest value</button>
+
+        <p>secondTestCount: {secondTestCount}</p>
+        <button onClick={increaseCount}>Increase Count</button>
+        <button onClick={decreaseCount}>Decrease Count</button>
+
+        <p>secondTestValue: {secondTestValue}</p>
+        <button onClick={changeSecondTestValue}>Change SecondTest value</button>
+
+        <p>secondTestBoolean: {secondTestBoolean ? "true" : "false"}</p>
+        <button onClick={toggleSecondTestState}>
+          Toggle Second Test Boolean
+        </button>
 
         <p className={styles.description}>
           Get started by editing{" "}

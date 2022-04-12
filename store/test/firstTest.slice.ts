@@ -6,7 +6,7 @@ interface firstTestState {
 }
 
 const initialState: firstTestState = {
-  text: 'initial text value'
+  text: 'initial first test value'
 }
 
 export const firstTest = createSlice({
@@ -14,6 +14,7 @@ export const firstTest = createSlice({
   initialState,
   reducers: {
     changeText: (state, action) => {
+      console.log('firstTest changeText action', action)
       state.text = action.payload
     },
   }
