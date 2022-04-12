@@ -3,7 +3,6 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useAppSelector, useAppDispatch } from "../store/index";
-import { RootStateOrAny } from "react-redux";
 import { changeText } from "../store/test/firstTest.slice";
 import {
   changeValue,
@@ -14,17 +13,11 @@ import {
 
 const Home: NextPage = () => {
   const dispatch = useAppDispatch();
-  const firstTestValue = useAppSelector(
-    (state: RootStateOrAny) => state.firstTest.text
-  );
-  const secondTestValue = useAppSelector(
-    (state: RootStateOrAny) => state.secondTest.value
-  );
-  const secondTestCount = useAppSelector(
-    (state: RootStateOrAny) => state.secondTest.count
-  );
+  const firstTestValue = useAppSelector(({ firstTest }) => firstTest.text);
+  const secondTestValue = useAppSelector(({ secondTest }) => secondTest.value);
+  const secondTestCount = useAppSelector(({ secondTest }) => secondTest.count);
   const secondTestBoolean = useAppSelector(
-    (state: RootStateOrAny) => state.secondTest.active
+    ({ secondTest }) => secondTest.active
   );
 
   const changeFirstTestValue = () => {

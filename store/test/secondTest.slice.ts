@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 interface testState {
-    value: string,
-    count: number,
-    active: boolean
+  value: string,
+  count: number,
+  active: boolean
 }
 
 const initialState: testState = {
-    value: 'initial second test value',
-    count: 0,
-    active: false
+  value: 'initial second test value',
+  count: 0,
+  active: false
 }
 
 export const secondTest = createSlice({
