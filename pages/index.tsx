@@ -3,9 +3,15 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useAppSelector } from "../store/index";
+import { RootStateOrAny } from "react-redux";
 
 const Home: NextPage = () => {
-  const toggleRemovedValue = useAppSelector((state) => state.first.text);
+  const toggleRemovedValue = useAppSelector(
+    (state: RootStateOrAny) => state.firstTest.value
+  );
+  const second = useAppSelector(
+    (state: RootStateOrAny) => state.secondTest.count
+  );
   return (
     <div className={styles.container}>
       <Head>
@@ -15,6 +21,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        <p>test {toggleRemovedValue}</p>
+        <p>count {second}</p>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
