@@ -13,9 +13,9 @@ export const firstTest = createSlice({
   name: 'first',
   initialState,
   reducers: {
-    changeText: (state, action) => {
-      console.log('firstTest changeText action', action)
-      state.text = action.payload
+    changeText: (state, {payload}) => {
+      console.log('firstTest changeText payload', payload)
+      state.text = payload
     },
   }
 })

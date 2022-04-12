@@ -24,12 +24,12 @@ const Home: NextPage = () => {
     dispatch(changeText("changed first test value~"));
   };
 
-  const increaseCount = () => {
-    dispatch(incrementByAmount(1));
-  };
-
-  const decreaseCount = () => {
-    dispatch(decrementByAmount(1));
+  const updateCount = (type: string) => {
+    if (type === "increase") {
+      dispatch(incrementByAmount(1));
+    } else if (type === "decrease") {
+      dispatch(decrementByAmount(1));
+    }
   };
 
   const changeSecondTestValue = () => {
@@ -57,8 +57,8 @@ const Home: NextPage = () => {
         <button onClick={changeFirstTestValue}>Change FirstTest value</button>
 
         <p>secondTestCount: {secondTestCount}</p>
-        <button onClick={increaseCount}>Increase Count</button>
-        <button onClick={decreaseCount}>Decrease Count</button>
+        <button onClick={() => updateCount("increase")}>Increase Count</button>
+        <button onClick={() => updateCount("decrease")}>Decrease Count</button>
 
         <p>secondTestValue: {secondTestValue}</p>
         <button onClick={changeSecondTestValue}>Change SecondTest value</button>
