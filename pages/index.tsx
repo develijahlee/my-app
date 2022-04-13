@@ -10,9 +10,13 @@ import {
   decrementByAmount,
   toggleState,
 } from "../store/test/secondTest.slice";
+import { fetchToDoList } from "../store/test/fetch.thunk";
 
 const Home: NextPage = () => {
   const dispatch = useAppDispatch();
+  const firstTestTodoList = useAppSelector(
+    ({ firstTest }) => firstTest.todoList
+  );
   const firstTestValue = useAppSelector(({ firstTest }) => firstTest.text);
   const secondTestValue = useAppSelector(({ secondTest }) => secondTest.value);
   const secondTestCount = useAppSelector(({ secondTest }) => secondTest.count);
@@ -40,6 +44,10 @@ const Home: NextPage = () => {
     dispatch(toggleState());
   };
 
+  const test = () => {
+    dispatch(fetchToDoList());
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -52,6 +60,12 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+
+        <p>firstTestTodoList</p>
+        {firstTestTodoList.map((item, i) => (
+          <div key={i}>{item}</div>
+        ))}
+        <button onClick={test}>add todos</button>
 
         <p>firstTestValue: {firstTestValue}</p>
         <button onClick={changeFirstTestValue}>Change FirstTest value</button>
