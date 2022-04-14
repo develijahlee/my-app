@@ -12,6 +12,8 @@ import {
 } from "../store/test/secondTest.slice";
 import { fetchToDoList } from "../store/test/fetch.thunk";
 
+import useInput from "../hooks/useInput";
+
 const Home: NextPage = () => {
   const dispatch = useAppDispatch();
   const firstTestTodoList = useAppSelector(
@@ -23,6 +25,9 @@ const Home: NextPage = () => {
   const secondTestBoolean = useAppSelector(
     ({ secondTest }) => secondTest.active
   );
+
+  const email = useInput("");
+  const password = useInput("");
 
   const changeFirstTestValue = () => {
     dispatch(changeText("changed first test value~"));
@@ -81,6 +86,18 @@ const Home: NextPage = () => {
         <button onClick={toggleSecondTestState}>
           Toggle Second Test Boolean
         </button>
+
+        <input
+          placeholder="Email"
+          value={email.value}
+          onChange={email.onChange}
+        />
+        <input
+          placeholder="Password"
+          type="password"
+          value={password.value}
+          onChange={password.onChange}
+        />
 
         <p className={styles.description}>
           Get started by editing{" "}
