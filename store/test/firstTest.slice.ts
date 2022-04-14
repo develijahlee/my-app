@@ -3,7 +3,7 @@ import { fetchToDoList } from "./fetch.thunk";
 
 interface firstTestState {
   text: string;
-  todoList: string[];
+  todoList: any;
   currentRequestId: string;
   loading: string;
   error: string;
