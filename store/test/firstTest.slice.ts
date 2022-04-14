@@ -25,13 +25,13 @@ export const firstTest = createSlice({
       console.log("firstTest changeText payload", payload);
       state.text = payload;
     },
-    extraReducers: (builder) => {
-      // Add reducers for additional action types here, and handle loading state as needed
-      builder.addCase(fetchToDoList.fulfilled, (state: any, action: any) => {
-        // Add user to the state array
-        state.todoList = action.payload;
-      });
-    },
+  },
+  extraReducers: (builder) => {
+    // Add reducers for additional action types here, and handle loading state as needed
+    builder.addCase(fetchToDoList.fulfilled, (state: any, action: any) => {
+      // Add user to the state array
+      state.todoList = action.payload;
+    });
   },
 });
 

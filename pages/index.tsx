@@ -63,7 +63,7 @@ const Home: NextPage = () => {
 
         <p>firstTestTodoList</p>
         {firstTestTodoList.map((item, i) => (
-          <div key={i}>{item}</div>
+          <div key={i}>{item.title}</div>
         ))}
         <button onClick={test}>add todos</button>
 
