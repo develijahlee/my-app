@@ -11,7 +11,7 @@ interface firstTestState {
 
 const initialState: firstTestState = {
   text: "initial first test value",
-  todoList: ["a", "b", "c"],
+  todoList: [],
   currentRequestId: "",
   loading: "fin",
   error: "",
